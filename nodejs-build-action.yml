@@ -12,13 +12,18 @@ runs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - id: build
+    - name: Run build
+      shell: bash
       env:
         NODE_OPTIONS: "--max_old_space_size=4096"
       run: |
         npm ci
         npm run build --if-present
-    - run: tar cf built-directory.tar .
+
+    - name: Archiving the whole directory
+      shell: bash
+      run: tar cf built-directory.tar .
+
     - uses: actions/upload-artifact@v3
       with:
         name: built-directory.tar
