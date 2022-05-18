@@ -12,7 +12,8 @@ runs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - id: build
+    - Name: Run build
+      shell: bash
       env:
         NODE_OPTIONS: "--max_old_space_size=4096"
       run: |
