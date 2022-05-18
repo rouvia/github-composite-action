@@ -1,0 +1,22 @@
+name: "Test Nodejs App"
+description: "Test a Nodejs application (frontend)"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Download built-directory
+      uses: actions/download-artifact@v3
+      with:
+        name: built-directory.tar
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Run unit tests
+      env:
+        NODE_OPTIONS: "--max_old_space_size=4096"
+        run: |
+          tar xf built-directory.tar
+          npm test
