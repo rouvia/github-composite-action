@@ -14,10 +14,16 @@ runs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node }}
+
     - name: Run unit tests
       shell: bash
       env:
         NODE_OPTIONS: "--max_old_space_size=4096"
       run: |
-        tar xf built-directory.tar
+        # tar xf built-directory.tar
+        npm ci
         npm test

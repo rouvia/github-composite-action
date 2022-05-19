@@ -12,6 +12,11 @@ runs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node }}
+
     - name: Run build
       shell: bash
       env:
@@ -20,11 +25,11 @@ runs:
         npm ci
         npm run build --if-present
 
-    - name: Archiving the whole directory
-      shell: bash
-      run: tar cf built-directory.tar .
+    # - name: Archiving the whole directory
+    #   shell: bash
+    #   run: tar cf built-directory.tar .
 
-    - uses: actions/upload-artifact@v3
-      with:
-        name: built-directory.tar
-        path: ./built-directory.tar
+    # - uses: actions/upload-artifact@v3
+    #   with:
+    #     name: built-directory.tar
+    #     path: ./built-directory.tar
