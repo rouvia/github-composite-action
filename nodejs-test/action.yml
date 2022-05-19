@@ -4,11 +4,6 @@ description: "Test a Nodejs application (frontend)"
 runs:
   using: "composite"
   steps:
-    # - name: Download built-directory
-    #   uses: actions/download-artifact@v3
-    #   with:
-    #     name: built-directory.tar
-
     - uses: actions/checkout@v2
 
     - name: Setup node
@@ -21,6 +16,5 @@ runs:
       env:
         NODE_OPTIONS: "--max_old_space_size=4096"
       run: |
-        # tar xf built-directory.tar
         npm ci
         npm test
