@@ -5,7 +5,7 @@ runs:
   using: "composite"
   steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Setup node
       uses: actions/setup-node@v3
