@@ -13,6 +13,7 @@ runs:
       with:
         output: report-markdown
         test-script: npm test -- --coverage
+        annotations: failed-tests
     - uses: marocchino/sticky-pull-request-comment@v2
       with:
         message: ${{ steps.coverage.outputs.report }}
