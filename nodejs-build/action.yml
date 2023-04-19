@@ -12,12 +12,6 @@ runs:
       with:
         node-version: ${{ matrix.node }}
 
-    - name: create env file
-      shell: bash
-      run: |
-        touch .env
-        echo VITE_MAPBOX=${{ secrets.VITE_MAPBOX }} >> .env
-
     - name: Run build
       shell: bash
       env:

@@ -8,6 +8,13 @@ runs:
     - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node }}
+
+    - name: create env file
+      shell: bash
+      run: |
+        touch .env
+        echo VITE_MAPBOX=${{ secrets.VITE_MAPBOX }} >> .env
+
     - name: Coverage
       shell: bash
       run: |
