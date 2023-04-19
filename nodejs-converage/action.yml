@@ -8,12 +8,9 @@ runs:
     - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node }}
-    - uses: ArtiomTr/jest-coverage-report-action@v2
-      id: coverage
-      with:
-        output: report-markdown
-        test-script: npm test -- --coverage
-        annotations: failed-tests
-    - uses: marocchino/sticky-pull-request-comment@v2
-      with:
-        message: ${{ steps.coverage.outputs.report }}
+    - name: Coverage
+      shell: bash
+      run: |
+        npm run coverage
+    - name: Report Coverage
+      uses: davelosert/vitest-coverage-report-action@v1
