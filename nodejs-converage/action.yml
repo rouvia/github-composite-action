@@ -15,4 +15,5 @@ runs:
         npm ci
         npm run coverage
     - name: Report Coverage
+      if: always()
       uses: davelosert/vitest-coverage-report-action@v1
